@@ -30,11 +30,5 @@ public class S3Uploader {
       .withCannedAcl(CannedAccessControlList.PublicRead));
     return amazonS3Client.getUrl(bucket, fileName).toString();
   }
-//new ByteArrayInputStream(multipartFile)
-  private String getNewFileName(String originalFilename, String dirName) {
-    Random randomGenerator = new Random();
-    int randNum = randomGenerator.nextInt(100000);
-    String fileName = String.valueOf(System.currentTimeMillis()) + String.valueOf(randNum) + originalFilename.substring(originalFilename.lastIndexOf("."));
-    return dirName + "/" + fileName;
-  }
+
 }
