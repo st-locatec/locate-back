@@ -1,4 +1,4 @@
-package com.toolc.stmap.domain.object.dto;
+package com.toolc.stmap.domain.product.dto;
 
 
 import lombok.AccessLevel;

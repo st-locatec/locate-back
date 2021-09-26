@@ -1,8 +1,7 @@
-package com.toolc.stmap.domain.object.api;
+package com.toolc.stmap.domain.product.api;
 
-import com.toolc.stmap.domain.object.dto.ProductRegisterRequestDto;
-import com.toolc.stmap.domain.object.service.RegisteringProduct;
-import com.toolc.stmap.global.common.s3.S3Uploader;
+import com.toolc.stmap.domain.product.dto.ProductRegisterRequestDto;
+import com.toolc.stmap.domain.product.service.RegisteringProduct;
 import com.toolc.stmap.global.response.SuccessResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +30,13 @@ public class ProductController {
     return ResponseEntity.ok().body(response);
   }
 
-
+//  @PostMapping("/api/product/register/permit")
+//  public ResponseEntity<?> register(@RequestBody ProductRegisterRequestDto dto) throws IOException {
+//    registeringProduct.register(
+//      dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
+//
+//    SuccessResponse response = new SuccessResponse("등록 요청 성공");
+//    return ResponseEntity.ok().body(response);
+//  }
 }
 

@@ -1,7 +1,7 @@
-package com.toolc.stmap.domain.object.service;
+package com.toolc.stmap.domain.product.service;
 
-import com.toolc.stmap.domain.object.repository.interfaces.ProductRepository;
-import com.toolc.stmap.domain.object.vo.RegisteringRequestProductVo;
+import com.toolc.stmap.domain.product.repository.interfaces.ProductRepository;
+import com.toolc.stmap.domain.product.vo.RegisteringRequestProductVo;
 import com.toolc.stmap.global.common.s3.S3Uploader;
 import lombok.RequiredArgsConstructor;
 

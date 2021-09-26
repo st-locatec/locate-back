@@ -1,4 +1,4 @@
-package com.toolc.stmap.domain.object.entity.product;
+package com.toolc.stmap.domain.product.entity.product;
 
 public enum LocationType {
   smoking, trash;

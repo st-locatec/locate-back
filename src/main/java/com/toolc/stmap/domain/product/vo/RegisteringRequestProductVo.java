@@ -1,7 +1,7 @@
-package com.toolc.stmap.domain.object.vo;
+package com.toolc.stmap.domain.product.vo;
 
-import com.toolc.stmap.domain.object.entity.product.LocationType;
-import com.toolc.stmap.domain.object.entity.product.Product;
+import com.toolc.stmap.domain.product.entity.product.LocationType;
+import com.toolc.stmap.domain.product.entity.product.Product;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
