@@ -31,4 +31,8 @@ public class Product extends BaseEntity {
     ImageUrl = imageUrl;
     this.isRegister = isRegister;
   }
+
+  public void changeStatusProduct(Boolean status){
+    this.isRegister = status;
+  }
 }
