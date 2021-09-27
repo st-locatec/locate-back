@@ -14,16 +14,17 @@ import javax.persistence.Enumerated;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product extends BaseEntity {
 
-    private String latitude;
+  private String latitude;
 
-    private String longitude;
+  private String longitude;
 
-    @Enumerated(value = EnumType.STRING)
-    private LocationType type;
+  @Enumerated(value = EnumType.STRING)
+  private LocationType type;
 
-    private String ImageUrl;
+  private String ImageUrl;
 
-    private Boolean isRegister;
+  private Boolean isRegister;
+
   public Product(String latitude, String longitude, LocationType type, String imageUrl, Boolean isRegister) {
     this.latitude = latitude;
     this.longitude = longitude;
@@ -32,7 +33,7 @@ public class Product extends BaseEntity {
     this.isRegister = isRegister;
   }
 
-  public void changeStatusProduct(Boolean status){
+  public void changeStatusProduct(Boolean status) {
     this.isRegister = status;
   }
 }

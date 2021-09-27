@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 
 aws.yaml
+application-prod.yaml
 
 
 ### STS ###
