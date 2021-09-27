@@ -22,27 +22,3 @@ public class ProductRegisterRequestDto {
   }
 
 }
-//enum LocationType {
-//  SMOKING, TRASH;
-//
-//
-//  @JsonValue
-//  private String type;
-//
-//
-//
-//  public String getType() {
-//    return this.type;
-//  }
-//
-//  @JsonCreator
-//  public static LocationType getLocationType(String value) {
-//    for (LocationType type : LocationType.values()) {
-//      System.out.println(type);
-//      if(type.getType().equals(value)){
-//        return type;
-//      }
-//    }
-//    return null;
-//  }
-//}

@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class SuccessResponse {
   private final int status = HttpStatus.OK.value();
-  private final String message;
+  private final Object response;
 
-  public SuccessResponse(String message) {
-    this.message = message;
+  public SuccessResponse(Object response) {
+    this.response = response;
   }
 }
