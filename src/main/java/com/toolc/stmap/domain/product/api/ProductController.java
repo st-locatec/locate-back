@@ -1,7 +1,9 @@
 package com.toolc.stmap.domain.product.api;
 
+import com.toolc.stmap.domain.product.dto.ProductChangeRequestDto;
 import com.toolc.stmap.domain.product.dto.ProductRegisterRequestDto;
 import com.toolc.stmap.domain.product.entity.product.Product;
+import com.toolc.stmap.domain.product.service.ChangeProduct;
 import com.toolc.stmap.domain.product.service.FindAllProduct;
 import com.toolc.stmap.domain.product.service.RegisteringProduct;
 import com.toolc.stmap.global.response.SuccessResponse;
@@ -23,6 +25,7 @@ import java.util.List;
 public class ProductController {
 
   private final RegisteringProduct registeringProduct;
+  private final ChangeProduct changeProduct;
   private final FindAllProduct findAllProduct;
 
   //물건 등록 요청
@@ -32,6 +35,14 @@ public class ProductController {
       dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
 
     SuccessResponse response = new SuccessResponse("등록 요청 성공");
+    return ResponseEntity.ok().body(response);
+  }
+
+  @PostMapping("/api/product/change")
+  public ResponseEntity<?> change(@RequestBody ProductChangeRequestDto dto) throws IOException {
+    changeProduct.change(dto.getProductId(), dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
+
+    SuccessResponse response = new SuccessResponse("수정 성공");
     return ResponseEntity.ok().body(response);
   }
 
