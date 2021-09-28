@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PermittingProduct {
+public class ProcessingRegisterRequestProduct {
 
   private final ProductRepository productRepository;
 
@@ -17,5 +17,10 @@ public class PermittingProduct {
     product.changeStatusProduct(true);
     productRepository.save(product);
     return product;
+  }
+
+  public void reject(Long productId) {
+    Product product = productRepository.findById(productId).orElseThrow(NotExistProductException::new);
+    productRepository.delete(product);
   }
 }

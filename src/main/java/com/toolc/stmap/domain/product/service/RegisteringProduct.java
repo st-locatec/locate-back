@@ -21,7 +21,6 @@ public interface RegisteringProduct {
     @Override
     public String register(Double latitude, Double longitude, String type, String image) {
       RegisteringRequestProductVo productVo = new RegisteringRequestProductVo(latitude, longitude, type, image);
-      System.out.println("db");
       productRepository.save(productVo.parsingEntity());
       return null;
     }
@@ -34,8 +33,11 @@ public interface RegisteringProduct {
 
     @Override
     public String register(Double latitude, Double longitude, String type, String image) throws IOException {
-      String profileImg = s3Uploader.upload(getDecoder().decode(image), type);
-      return profileImg;
+      if(image != null) {
+        String profileImg = s3Uploader.upload(getDecoder().decode(image), type);
+        return profileImg;
+      }
+      return null;
     }
   }
 

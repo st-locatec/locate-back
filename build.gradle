@@ -28,6 +28,9 @@ dependencies {
   //mysql
   implementation 'mysql:mysql-connector-java'
 
+  //h2
+  runtimeOnly 'com.h2database:h2:1.4.200'
+
   //image IO
   implementation 'commons-io:commons-io:2.8.0'
 

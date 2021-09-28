@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface ProductRepository {
   Product save(Product productEntity);
+  void delete(Product deleteEntity);
   Optional<Product> findById(Long id);
   List<Product> findAllByIsRegister(Boolean isRegistered);
 }

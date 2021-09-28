@@ -1,8 +1,9 @@
 package com.toolc.stmap.domain.product.api;
 
-import com.toolc.stmap.domain.product.dto.ProductRegisterRequestDto;
+import com.toolc.stmap.domain.product.dto.ProcessingRegisterRequestDto;
 import com.toolc.stmap.domain.product.entity.product.Product;
 import com.toolc.stmap.domain.product.service.InquiryProduct;
+import com.toolc.stmap.domain.product.service.ProcessingRegisterRequestProduct;
 import com.toolc.stmap.global.response.SuccessResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -21,6 +21,8 @@ import java.util.List;
 public class AdminController {
 
   private final InquiryProduct inquiryProduct;
+  private final ProcessingRegisterRequestProduct processingRegisterRequestProduct;
+
 
   @GetMapping("/api/admin/registered")
   public ResponseEntity<?> getRegistered() {
@@ -43,4 +45,23 @@ public class AdminController {
 
     return ResponseEntity.ok().body(new SuccessResponse(products));
   }
+
+
+  @PostMapping("/api/admin/register/permit")
+  public ResponseEntity<?> permit(@RequestBody ProcessingRegisterRequestDto dto) {
+    Product permitProduct = processingRegisterRequestProduct.permit(dto.getProductId());
+
+    SuccessResponse response = new SuccessResponse(permitProduct);
+    return ResponseEntity.ok().body(response);
+  }
+
+  @PostMapping("/api/admin/register/reject")
+  public ResponseEntity<?> reject(@RequestBody ProcessingRegisterRequestDto dto) {
+    processingRegisterRequestProduct.reject(dto.getProductId());
+
+    SuccessResponse response = new SuccessResponse("요청 거절 성공");
+    return ResponseEntity.ok().body(response);
+  }
+
+
 }

@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ProductRegisterPermitDto {
+public class ProcessingRegisterRequestDto {
 
   private Long productId;
 
-  public ProductRegisterPermitDto(Long productId) {
+  public ProcessingRegisterRequestDto(Long productId) {
     this.productId = productId;
   }
 }
