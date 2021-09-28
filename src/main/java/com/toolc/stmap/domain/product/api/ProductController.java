@@ -45,6 +45,5 @@ public class ProductController {
     return ResponseEntity.ok().body(new SuccessResponse(products));
   }
 
-
 }
 
