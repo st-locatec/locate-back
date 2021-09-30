@@ -40,7 +40,7 @@ public class AdminController {
     return ResponseEntity.ok().body(new SuccessResponse(products));
   }
 
-  @GetMapping("/api/product/all")
+  @GetMapping("/find/all")
   public ResponseEntity<?> findAllProduct() throws IOException {
     List<Product> products = findAllProduct.findAll();
 
@@ -63,7 +63,7 @@ public class AdminController {
   public ResponseEntity<?> change(@RequestBody ProductChangeRequestDto dto) throws IOException {
     changeProduct.change(dto.getProductId(), dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
 
-    SuccessResponse response = new SuccessResponse("수정 성공");
+    SuccessResponse response = new SuccessResponse("수정 성공 ");
     return ResponseEntity.ok().body(response);
   }
 
