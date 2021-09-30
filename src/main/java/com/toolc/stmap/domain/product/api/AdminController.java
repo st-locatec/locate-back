@@ -2,6 +2,7 @@ package com.toolc.stmap.domain.product.api;
 
 import com.toolc.stmap.domain.product.dto.ProcessingRegisterRequestDto;
 import com.toolc.stmap.domain.product.dto.ProductChangeRequestDto;
+import com.toolc.stmap.domain.product.dto.ProductDeleteRequestDto;
 import com.toolc.stmap.domain.product.dto.ProductRegisterRequestDto;
 import com.toolc.stmap.domain.product.entity.product.Product;
 import com.toolc.stmap.domain.product.service.*;
@@ -17,13 +18,14 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/amdin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
   private final InquiryProduct inquiryProduct;
   private final ProcessingRegisterRequestProduct processingRegisterRequestProduct;
   private final RegisteringProduct registeringProduct;
   private final ChangeProduct changeProduct;
+  private final DeleteProduct deleteProduct;
   private final FindAllProduct findAllProduct;
 
 
@@ -62,6 +64,14 @@ public class AdminController {
     changeProduct.change(dto.getProductId(), dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
 
     SuccessResponse response = new SuccessResponse("수정 성공");
+    return ResponseEntity.ok().body(response);
+  }
+
+  @PostMapping("/delete")
+  public ResponseEntity<?> delete(@RequestBody ProductDeleteRequestDto dto) {
+    deleteProduct.delete(dto.getProductId());
+
+    SuccessResponse response = new SuccessResponse("삭제 성공");
     return ResponseEntity.ok().body(response);
   }
 
