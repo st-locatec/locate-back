@@ -38,9 +38,9 @@ public class ChangeProduct {
 
   private Product changeExcludeImage(Product product, Double latitude, Double longitude, String type) {
     RegisteringRequestProductVo productVo = new RegisteringRequestProductVo(latitude, longitude, type, null);
-    product.setLatitude(productVo.parsingEntity().getLatitude());
-    product.setLongitude(productVo.parsingEntity().getLongitude());
-    product.setType(productVo.parsingEntity().getType());
+    product.setLatitude(productVo.parsingEntity(false).getLatitude());
+    product.setLongitude(productVo.parsingEntity(false).getLongitude());
+    product.setType(productVo.parsingEntity(false).getType());
 
     return product;
   }

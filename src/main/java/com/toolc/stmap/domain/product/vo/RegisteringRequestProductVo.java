@@ -43,7 +43,7 @@ public class RegisteringRequestProductVo {
   }
 
   //유효한 물건 Entity 파싱
-  public Product parsingEntity(){
-    return new Product(this.address.latitude, this.address.longitude, this.type, this.imageUrl, false);
+  public Product parsingEntity(Boolean isRegister){
+    return new Product(this.address.latitude, this.address.longitude, this.type, this.imageUrl, isRegister);
   }
 }

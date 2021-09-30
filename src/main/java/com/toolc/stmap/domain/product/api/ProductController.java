@@ -32,7 +32,7 @@ public class ProductController {
   @PostMapping("/api/product/register/request")
   public ResponseEntity<?> register(@RequestBody ProductRegisterRequestDto dto) throws IOException {
     registeringProduct.register(
-      dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
+      dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage(), false);
 
     SuccessResponse response = new SuccessResponse("등록 요청 성공");
     return ResponseEntity.ok().body(response);

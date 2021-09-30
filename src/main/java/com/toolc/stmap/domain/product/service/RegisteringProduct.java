@@ -11,7 +11,7 @@ import java.util.List;
 import static java.util.Base64.getDecoder;
 
 public interface RegisteringProduct {
-  String register(Double latitude, Double longitude, String type, String image) throws IOException;
+  String register(Double latitude, Double longitude, String type, String image, Boolean isRegister) throws IOException;
 
   @RequiredArgsConstructor
   class UpdateDatabase implements RegisteringProduct {
@@ -19,9 +19,9 @@ public interface RegisteringProduct {
     private final ProductRepository productRepository;
 
     @Override
-    public String register(Double latitude, Double longitude, String type, String image) {
+    public String register(Double latitude, Double longitude, String type, String image, Boolean isRegister) {
       RegisteringRequestProductVo productVo = new RegisteringRequestProductVo(latitude, longitude, type, image);
-      productRepository.save(productVo.parsingEntity());
+      productRepository.save(productVo.parsingEntity(isRegister));
       return null;
     }
   }
@@ -32,7 +32,7 @@ public interface RegisteringProduct {
     private final S3Uploader s3Uploader;
 
     @Override
-    public String register(Double latitude, Double longitude, String type, String image) throws IOException {
+    public String register(Double latitude, Double longitude, String type, String image, Boolean isRegister) throws IOException {
       if(image != null) {
         String profileImg = s3Uploader.upload(getDecoder().decode(image), type);
         return profileImg;
@@ -46,9 +46,9 @@ public interface RegisteringProduct {
     private final List<RegisteringProduct> registeringProducts;
 
     @Override
-    public String register(Double latitude, Double longitude, String type, String image) throws IOException {
-      String imageUrl = registeringProducts.get(0).register(latitude, longitude, type, image);
-      registeringProducts.get(1).register(latitude, longitude, type, imageUrl);
+    public String register(Double latitude, Double longitude, String type, String image, Boolean isRegister) throws IOException {
+      String imageUrl = registeringProducts.get(0).register(latitude, longitude, type, image, isRegister);
+      registeringProducts.get(1).register(latitude, longitude, type, imageUrl, isRegister);
 
       return null;
     }
