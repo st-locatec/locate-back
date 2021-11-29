@@ -33,7 +33,7 @@ public class AdminController {
   public ResponseEntity<?> getNotRegistered() {
 
     List<Product> products = inquiryProduct.inquiry(false);
-    if(products.isEmpty()){
+    if (products.isEmpty()) {
       return ResponseEntity.ok().body(new SuccessResponse("product가 없습니다."));
     }
 
@@ -44,7 +44,7 @@ public class AdminController {
   public ResponseEntity<?> findAllProduct() throws IOException {
     List<Product> products = findAllProduct.findAll();
 
-    if(products.isEmpty()){
+    if (products.isEmpty()) {
       return ResponseEntity.ok().body(new SuccessResponse("product가 없습니다."));
     }
     return ResponseEntity.ok().body(new SuccessResponse(products));
@@ -53,7 +53,8 @@ public class AdminController {
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody ProductRegisterRequestDto dto) throws IOException {
     registeringProduct.register(
-      dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage(), true);
+      dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage(),
+      true);
 
     SuccessResponse response = new SuccessResponse("관리자 권한으로 product 등록 성공");
     return ResponseEntity.ok().body(response);
@@ -61,7 +62,8 @@ public class AdminController {
 
   @PostMapping("/change")
   public ResponseEntity<?> change(@RequestBody ProductChangeRequestDto dto) throws IOException {
-    changeProduct.change(dto.getProductId(), dto.getLatitude(), dto.getLongitude(), dto.getType(), dto.getImage());
+    changeProduct.change(dto.getProductId(), dto.getLatitude(),
+      dto.getLongitude(), dto.getType(), dto.getImage());
 
     SuccessResponse response = new SuccessResponse("수정 성공 ");
     return ResponseEntity.ok().body(response);
@@ -77,7 +79,8 @@ public class AdminController {
 
   @PostMapping("/register/permit")
   public ResponseEntity<?> permit(@RequestBody ProcessingRegisterRequestDto dto) {
-    Product permitProduct = processingRegisterRequestProduct.permit(dto.getProductId());
+    Product permitProduct =
+      processingRegisterRequestProduct.permit(dto.getProductId());
 
     SuccessResponse response = new SuccessResponse(permitProduct);
     return ResponseEntity.ok().body(response);
