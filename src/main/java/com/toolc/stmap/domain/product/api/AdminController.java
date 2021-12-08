@@ -1,11 +1,9 @@
 package com.toolc.stmap.domain.product.api;
 
-import com.toolc.stmap.domain.product.dto.ProcessingRegisterRequestDto;
-import com.toolc.stmap.domain.product.dto.ProductChangeRequestDto;
-import com.toolc.stmap.domain.product.dto.ProductDeleteRequestDto;
-import com.toolc.stmap.domain.product.dto.ProductRegisterRequestDto;
+import com.toolc.stmap.domain.product.dto.*;
 import com.toolc.stmap.domain.product.entity.product.Product;
 import com.toolc.stmap.domain.product.service.*;
+import com.toolc.stmap.global.response.BadRequestResponse;
 import com.toolc.stmap.global.response.SuccessResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +24,18 @@ public class AdminController {
   private final RegisteringProduct registeringProduct;
   private final ChangeProduct changeProduct;
   private final DeleteProduct deleteProduct;
+  private final AdminLogin adminLogin;
   private final FindAllProduct findAllProduct;
 
+  @PostMapping("/login")
+  public ResponseEntity<?> login(@RequestBody AdminLoginDto dto) {
+
+    if(adminLogin.login(dto.getId(), dto.getPassword())){
+      return ResponseEntity.ok(new SuccessResponse("Login 성공"));
+    }
+
+    return ResponseEntity.badRequest().body(new BadRequestResponse("Login 실패"));
+  }
 
   @GetMapping("/find/NotRegistered")
   public ResponseEntity<?> getNotRegistered() {
